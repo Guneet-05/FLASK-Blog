@@ -33,9 +33,9 @@ def about():
 @app.route("/register",methods=['GET','POST'])
 def register():
     form = RegistrationForm()
-    # if form.validate_on_submit():
-    #     flash(f'Account created successfully for the user: {form.username.data}',category='success')
-    #     return redirect(url_for('home'))
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!','success')
+        return redirect(url_for('home'))
     return render_template("register.html",title="Flask Blog | Register",form=form)
 
 @app.route("/login")
